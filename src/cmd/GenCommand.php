@@ -148,6 +148,41 @@ class GenCommand extends BaseCommand
     /**
      *
      *
+     * Iblock form
+     *
+     *
+     */
+
+    /**
+     * createIblock
+     * @param array $args
+     * @param array $options
+     * @throws Exception
+     */
+    public function genIblockFormAdd(array $args, array $options = array())
+    {
+        $code = (isset($options['code'])) ? $options['code'] : false;
+
+        if (!$code) {
+            return;
+        }
+
+        # get description options
+        $desc = (isset($options['d'])) ? $options['d'] : "";
+
+        $autoTag = "add-form";
+        $this->_save(
+            $this->generateObject->generateAddCode($code),
+            $this->generateObject->generateDeleteCode($code)
+            , $desc,
+            $autoTag
+        );
+
+    }
+
+    /**
+     *
+     *
      * Iblock
      *
      *
